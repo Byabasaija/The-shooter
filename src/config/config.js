@@ -6,7 +6,7 @@ export default {
     mode: Phaser.Scale.NONE,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     width: 320,
-    height: 240,
+    height: 260,
   },
   parent: 'content',
   dom: {
