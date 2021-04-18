@@ -69,7 +69,6 @@ export default class PreloaderScene extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
-      this.ready();
     });
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
@@ -87,18 +86,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
 
   create() {
-    this.scene.start('Title');
-  }
-
-  init() {
-    this.readyCount = 0;
-  }
-
-  ready() {
-    // eslint-disable-next-line no-plusplus
-    this.readyCount++;
-    if (this.readyCount === 2) {
-      this.scene.start('Title');
-    }
+    this.scene.start('Game');
   }
 }
