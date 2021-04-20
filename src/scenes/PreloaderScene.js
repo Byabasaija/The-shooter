@@ -76,16 +76,33 @@ export default class PreloaderScene extends Phaser.Scene {
     // load assets needed in our game
     this.load.image('blueButton1', 'assets/ui/blue_button02.png');
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
-    this.load.image('phaserLogo', 'assets/logo.png');
 
-    this.load.image('phaserLogo', 'assets/logo.png');
     this.load.image('box', 'assets/ui/grey_box.png');
-    this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
-    this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
+    this.load.image('checkedBox', 'assets/sprBtnPlayHover.png');
+    this.load.image('checkedBox', 'assets/sprBtnPlay.png');
+
+
+    this.load.audio('sndBtnOver', ['assets/sndBtnOver.wav']);
+    this.load.audio('sndBtnDown', ['assets/sndBtnDown.wav']);
   }
 
 
   create() {
-    this.scene.start('Game');
+    this.sfx = {
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
+    };
+    this.btnPlay = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      'sprBtnPlay',
+    );
+
+    this.btnPlay.setInteractive();
+    this.btnPlay.on('pointerover', function setTexture() {
+      this.btnPlay.setTexture('sprBtnPlayHover');
+      this.sfx.btnOver.play();
+    }, this);
+    // this.scene.start('Game');
   }
 }
