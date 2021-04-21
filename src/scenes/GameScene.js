@@ -3,17 +3,19 @@ import Player from '../Entities/Player';
 
 import GunShip from '../Entities/GunShip';
 // import Laser from '../Objects/Laser';
+// atJDLGSYqkHSdEO8DULP
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
+    this.score = 0;
   }
 
   preload() {
     // this.load.image('ship', 'assets/SpaceShooterRedux/PNG/playerShip3_blue.png');
     this.load.image('laser', 'assets/SpaceShooterRedux/PNG/Lasers/laserBlue01.png');
     // this.load.image('enemy1', 'assets/SpaceShooterRedux/PNG/Enemies/enemyRed4.png');
-    this.load.image('sprBg0', 'assets/sprBg0.png');
+    this.load.image('darkPurple', 'assets/darkPurple.png');
     this.load.image('sprBg1', 'assets/sprBg1.png');
     this.load.spritesheet('sprExplosion', 'assets/sprExplosion.png', {
       frameWidth: 32,
@@ -40,6 +42,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.score = this.add.text(100, 10, `Score: ${this.score}`, { fontSize: '32px', fill: '#fff' });
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -97,7 +100,7 @@ export default class GameScene extends Phaser.Scene {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
-
+        this.score = 1;
         enemy.explode(true);
         playerLaser.destroy();
       }
@@ -119,7 +122,7 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.time.addEvent({
-      delay: 3000,
+      delay: 30000,
       loop: false,
       callback: () => {
         this.scene.start('GameOver');
@@ -166,17 +169,5 @@ export default class GameScene extends Phaser.Scene {
         }
       }
     }
-  }
-
-  getEnemiesByType(type) {
-    const arr = [];
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < this.enemies.getChildren().length; i++) {
-      const enemy = this.enemies.getChildren()[i];
-      if (enemy.getData('type') === type) {
-        arr.push(enemy);
-      }
-    }
-    return arr;
   }
 }
