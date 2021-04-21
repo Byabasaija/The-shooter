@@ -35,7 +35,7 @@ export default class PreloaderScene extends Phaser.Scene {
         fill: '#ffffff',
       },
     });
-    percentText.setOrigin(0.5, 0.5);
+    percentText.setOrigin(0.5);
 
     const assetText = this.make.text({
       x: width / 2,
@@ -78,8 +78,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
 
     this.load.image('box', 'assets/ui/grey_box.png');
-    this.load.image('checkedBox', 'assets/sprBtnPlayHover.png');
-    this.load.image('checkedBox', 'assets/sprBtnPlay.png');
 
 
     this.load.audio('sndBtnOver', ['assets/sndBtnOver.wav']);
@@ -88,21 +86,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
 
   create() {
-    this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
-    };
-    this.btnPlay = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
-      'sprBtnPlay',
-    );
-
-    this.btnPlay.setInteractive();
-    this.btnPlay.on('pointerover', function setTexture() {
-      this.btnPlay.setTexture('sprBtnPlayHover');
-      this.sfx.btnOver.play();
-    }, this);
-    // this.scene.start('Game');
+    this.scene.start('Title');
   }
 }

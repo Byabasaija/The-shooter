@@ -19,4 +19,32 @@ export default class OptionsScene extends Phaser.Scene {
     this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
     this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');
   }
+
+  create() {
+    this.sfx = {
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
+    };
+    this.btnPlay = this.add.sprite(
+      this.game.config.width * 0.5,
+
+      this.game.config.height * 0.5,
+      'sprBtnPlayHover',
+    );
+
+    this.btnPlay.setInteractive();
+    this.btnPlay.on('pointerup',
+      function () {
+        this.btnPlay.setTexture('sprBtnPlayHover');
+        this.scene.start('Game');
+      }, this);
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'Shooter Ship', {
+      fontFamily: 'Courgette, cursive',
+      fontSize: 48,
+      fontStyle: 'italic',
+      color: '#ffffff',
+      align: 'center',
+    });
+    this.title.setOrigin(0.5);
+  }
 }

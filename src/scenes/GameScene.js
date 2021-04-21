@@ -11,7 +11,7 @@ export default class GameScene extends Phaser.Scene {
 
   preload() {
     // this.load.image('ship', 'assets/SpaceShooterRedux/PNG/playerShip3_blue.png');
-    // this.load.image('laser', 'assets/SpaceShooterRedux/PNG/Lasers/laserBlue01.png');
+    this.load.image('laser', 'assets/SpaceShooterRedux/PNG/Lasers/laserBlue01.png');
     // this.load.image('enemy1', 'assets/SpaceShooterRedux/PNG/Enemies/enemyRed4.png');
     this.load.image('sprBg0', 'assets/sprBg0.png');
     this.load.image('sprBg1', 'assets/sprBg1.png');
@@ -116,6 +116,14 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true,
 
+    });
+
+    this.time.addEvent({
+      delay: 3000,
+      loop: false,
+      callback: () => {
+        this.scene.start('GameOver');
+      },
     });
   }
 
