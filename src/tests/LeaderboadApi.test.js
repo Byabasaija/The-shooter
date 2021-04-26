@@ -1,4 +1,4 @@
-const postScore = require('../score/scoreApi');
+const postScore = require('../score/post');
 
 describe('LeaderBoard', () => {
   test('it should return the type', () => {
