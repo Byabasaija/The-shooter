@@ -2,19 +2,29 @@ import Phaser from 'phaser';
 import Player from '../Entities/Player';
 
 import GunShip from '../Entities/GunShip';
+import score from '../score/score';
+import { getScores } from '../score/scoreApi';
+import game from '../score/status';
+
+
 // import Laser from '../Objects/Laser';
 // atJDLGSYqkHSdEO8DULP
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
-    this.score = 0;
   }
 
+  init() {
+    this.score = 0;
+    this.addvalue = 0;
+  }
+
+
   preload() {
-    // this.load.image('ship', 'assets/SpaceShooterRedux/PNG/playerShip3_blue.png');
+    this.gameStatus = game(true);
     this.load.image('laser', 'assets/SpaceShooterRedux/PNG/Lasers/laserBlue01.png');
-    // this.load.image('enemy1', 'assets/SpaceShooterRedux/PNG/Enemies/enemyRed4.png');
+    this.load.image('sky', 'assets/sky.png');
     this.load.image('darkPurple', 'assets/darkPurple.png');
     this.load.image('sprBg1', 'assets/sprBg1.png');
     this.load.spritesheet('sprExplosion', 'assets/sprExplosion.png', {
@@ -42,7 +52,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.score = this.add.text(100, 10, `Score: ${this.score}`, { fontSize: '32px', fill: '#fff' });
+    this.add.tileSprite(0, 0, 1500, 1300, 'sky');
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -77,6 +87,16 @@ export default class GameScene extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
+
+    this.textScore = this.add.text(
+      5,
+      10,
+      `Score: ${this.score}`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 20,
+      },
+    );
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
@@ -100,7 +120,6 @@ export default class GameScene extends Phaser.Scene {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
-        this.score = 1;
         enemy.explode(true);
         playerLaser.destroy();
       }
@@ -128,7 +147,26 @@ export default class GameScene extends Phaser.Scene {
         this.scene.start('GameOver');
       },
     });
+    this.topScore();
   }
+
+  addScore(amount) {
+    this.score = score(this.score, amount);
+    this.textScore.setText(`Score: ${this.score}`);
+  }
+
+  async topScore() {
+    const resultObject = await getScores();
+
+    if (Array.isArray(resultObject.result)) {
+      this.scores = resultObject.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
+
+      for (let i = 0; i < 1; i += 1) {
+        localStorage.setItem('highScore', this.scores[0].score);
+      }
+    }
+  }
+
 
   update() {
     if (!this.player.getData('isDead')) {
@@ -150,6 +188,8 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
         this.player.setData('isShooting', false);
       }
+
+      localStorage.setItem('gameScore', this.score);
     }
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < this.enemies.getChildren().length; i++) {

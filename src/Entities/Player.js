@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+// import Phaser from 'phaser';
 import Entity from './Entity';
 import PlayerLaser from './PlayerLaser';
 
@@ -9,31 +9,31 @@ export default class Player extends Entity {
     this.setData('isShooting', false);
     this.setData('timerShootDelay', 20);
     this.setData('timerShootTick', this.getData('timerShootDelay') - 1);
-    this.score = 0;
   }
 
 
+  create() {
+    this.body.collideWorldBounds = true;
+  }
+
   moveUp() {
-    this.body.velocity.y = -this.getData('speed');
+    this.body.angularVelocity = -this.getData('speed');
   }
 
   moveDown() {
-    this.body.velocity.y = this.getData('speed');
+    this.body.angularVelocity = this.getData('speed');
   }
 
   moveLeft() {
-    this.body.velocity.x = -this.getData('speed');
+    this.body.angularVelocity = -this.getData('speed');
   }
 
   moveRight() {
-    this.body.velocity.x = this.getData('speed');
+    this.body.angularVelocity = this.getData('speed');
   }
 
   update() {
-    this.body.setVelocity(0, 0);
-
-    this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
-    this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);
+    this.body.maxVelocity.set(400);
     if (this.getData('isShooting')) {
       if (this.getData('timerShootTick') < this.getData('timerShootDelay')) {
         this.setData('timerShootTick', this.getData('timerShootTick') + 1);

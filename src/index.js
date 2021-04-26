@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 // import Model from './Model';
+/* eslint-disable import/no-unresolved */
+import '@babel/polyfill';
 import config from './config/config';
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
 import TitleScene from './scenes/TitleScene';
 import GameScene from './scenes/GameScene';
 import GameOver from './scenes/GameOver';
-
 
 class Game extends Phaser.Game {
   constructor() {
