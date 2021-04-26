@@ -61,7 +61,7 @@ export default class TitleScene extends Phaser.Scene {
         nameInput.style.display = 'none';
         this.scene.start('Game');
       } else {
-        this.alertMsg.setText('Be real not a ghost. Enter name');
+        this.alertMsg.setText('Please Enter name');
       }
     });
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'Shooter Ship', {
