@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 // import Model from './Model';
 /* eslint-disable import/no-unresolved */
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import config from './config/config';
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';

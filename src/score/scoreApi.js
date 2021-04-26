@@ -32,4 +32,22 @@ const getScores = async () => {
   throw new Error('Error!');
 };
 
-export { sendScore, getScores };
+const postScore = async (name, score) => {
+  const response = await fetch(`${url}/games/${gameId}/scores`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      Accept: 'Application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user: name, score: Number(score) }),
+  });
+  if (response.ok) {
+    const result = await response.json();
+    return result;
+  }
+  throw new Error('Error!');
+};
+
+
+export { sendScore, getScores, postScore };
