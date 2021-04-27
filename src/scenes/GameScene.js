@@ -1,13 +1,11 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
 
-import GunShip from '../Entities/GunShip';
+import EnemyShip from '../Entities/EnemyShip';
 import score from '../score/score';
 import { getScores } from '../score/scoreApi';
 import game from '../score/status';
 
-
-// import Laser from '../Objects/Laser';
 // atJDLGSYqkHSdEO8DULP
 
 export default class GameScene extends Phaser.Scene {
@@ -128,7 +126,7 @@ export default class GameScene extends Phaser.Scene {
     this.time.addEvent({
       delay: 1000,
       callback() {
-        const enemy = new GunShip(
+        const enemy = new EnemyShip(
           this,
           Phaser.Math.Between(0, this.game.config.width),
           0,

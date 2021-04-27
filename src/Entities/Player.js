@@ -33,9 +33,9 @@ export default class Player extends Entity {
   }
 
   update() {
-    this.body.setVelocity(0, 0);
-
-    this.x = Phaser.Math.Clamp(this.x, 1, this.scene.game.config.width);
+    this.body.setVelocity(0);
+    this.body.collideWorldBounds = true;
+    this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
     this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);
 
     if (this.getData('isShooting')) {

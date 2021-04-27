@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import { sendScore } from '../score/scoreApi';
 
 
 export default class GameOver extends Phaser.Scene {
@@ -10,7 +9,7 @@ export default class GameOver extends Phaser.Scene {
     this.savedScore = 0;
   }
 
-  prealod() {
+  preload() {
     this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
     this.load.image('sky', 'assets/sky.png');
   }
@@ -25,10 +24,10 @@ export default class GameOver extends Phaser.Scene {
       align: 'center',
     });
     this.title.setOrigin(0.5);
-    this.btnRestart = this.add.text(
+    this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'RESTART', {
+      'sprBtnRestart', {
         fontFamily: 'Courgette, cursive',
         fontSize: 48,
       },
@@ -44,9 +43,6 @@ export default class GameOver extends Phaser.Scene {
 
     this.gameScore = localStorage.getItem('gameScore');
     this.myScore = parseInt(this.gameScore, 10);
-    this.highScore = localStorage.getItem('highScore');
-    this.savedScore = parseInt(this.highScore, 10);
-    this.playerName = localStorage.getItem('playerName');
 
     this.textScore = this.add.text(
       100,
@@ -58,29 +54,5 @@ export default class GameOver extends Phaser.Scene {
         color: '#fff',
       },
     );
-
-    this.highScor = this.add.text(
-      10,
-      370,
-      ' ',
-      {
-        fontFamily: 'monospace',
-        fontSize: 24,
-        color: 'green',
-        align: 'center',
-      },
-    );
-
-
-    this.checkForHighScore();
-    sendScore(this.playerName, this.gameScore);
-  }
-
-  checkForHighScore() {
-    if (this.myScore > this.savedScore) {
-      this.highScor.setText('CONGRATS ON NEW HIGH SCORE!! 😄');
-    } else {
-      this.highScor.setText('Nice Play but not a high score. 😔');
-    }
   }
 }

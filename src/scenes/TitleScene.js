@@ -6,7 +6,7 @@ export default class TitleScene extends Phaser.Scene {
     super('Title');
   }
 
-  prealod() {
+  preload() {
     this.load.image('sky', 'assets/sky.png');
 
     this.load.image('sprBtnPlay', 'assets/sprBtnPlay.png');
@@ -17,12 +17,12 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   create() {
-    // this.add.tileSprite(0, 0, 1500, 1300, 'sky');
+    this.add.tileSprite(0, 0, 1500, 1300, 'sky');
 
-    this.btnPlay = this.add.text(
+    this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'START', {
+      'sprBtnPlay', {
         fontFamily: 'Courgette, cursive',
         fontSize: 48,
       },
@@ -35,9 +35,8 @@ export default class TitleScene extends Phaser.Scene {
       fontSize: '30px',
       backgroundColor: '#fff',
     });
-
     const nameInput = document.createElement('input');
-    nameInput.placeholder = 'Player name';
+    nameInput.placeholder = 'Enter your name to play';
     nameInput.type = 'text';
     nameInput.id = 'username';
     nameInput.className = 'username';
@@ -61,7 +60,7 @@ export default class TitleScene extends Phaser.Scene {
         nameInput.style.display = 'none';
         this.scene.start('Game');
       } else {
-        this.alertMsg.setText('Please Enter name');
+        this.alertMsg.setText('Please Enter Your Name to Play');
       }
     });
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'Shooter Ship', {
