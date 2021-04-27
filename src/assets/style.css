@@ -1,23 +1,22 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .game {
-    position: absolute;
-    top: 200px;
-    left:670px;
-  }
-  
-  .username {
-    border-radius: 15px;
-    width: 10rem;
-    padding: 0.4rem;
-    transition: all 0.5s;
-  }
-  
-  .username:focus {
-    width: 15rem;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.game {
+  position: absolute;
+  top: 200px;
+  left: 670px;
+}
+
+.username {
+  border-radius: 15px;
+  width: 10rem;
+  padding: 0.4rem;
+  transition: all 0.5s;
+}
+
+.username:focus {
+  width: 15rem;
+}
