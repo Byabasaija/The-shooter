@@ -20,7 +20,7 @@
 
 ## Live Demo Link
 
-https://krishnzzz.github.io/bike-shooter/
+
 
 ## Getting started
 
