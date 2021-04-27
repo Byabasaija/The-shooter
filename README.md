@@ -20,6 +20,7 @@
 
 ## Live Demo Link
 
+[Play Live](https://priceless-khorana-be5fe5.netlify.app/)
 
 
 ## Getting started
