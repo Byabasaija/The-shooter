@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-
+import { sendScore } from '../score/scoreApi';
 
 export default class GameOver extends Phaser.Scene {
   constructor() {
@@ -12,11 +12,12 @@ export default class GameOver extends Phaser.Scene {
   preload() {
     this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
     this.load.image('sky', 'assets/sky.png');
+    this.load.image('leaderboad', 'assets/leaderboad.png');
   }
 
   create() {
     this.add.tileSprite(0, 0, 1500, 1300, 'sky');
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
+    this.title = this.add.text(this.game.config.width * 0.5, 90, 'GAME OVER', {
       fontFamily: 'Roboto',
       fontSize: 48,
       fontStyle: 'bold',
@@ -42,10 +43,10 @@ export default class GameOver extends Phaser.Scene {
         this.scene.start('Game');
       }, this);
 
-    this.btnLeaderBoard = this.add.text(
-      100,
+    this.btnLeaderBoard = this.add.sprite(
+      230,
       200,
-      'LEADERBOARD', {
+      'leaderboad', {
         fontFamily: 'monospace',
         fontSize: 32,
       },
@@ -57,13 +58,19 @@ export default class GameOver extends Phaser.Scene {
       function () {
         this.scene.start('LeaderBoard');
       }, this);
+
     this.gameScore = localStorage.getItem('gameScore');
     this.myScore = parseInt(this.gameScore, 10);
+    this.highScore = localStorage.getItem('highScore');
+    this.savedScore = parseInt(this.highScore, 10);
+    this.playerName = localStorage.getItem('playerName');
 
+    sendScore(this.playerName, this.gameScore);
     this.textScore = this.add.text(
       100,
-      300,
-      `Your Score: ${this.gameScore}`,
+      350,
+
+      `Score: ${this.gameScore}`,
       {
         fontFamily: 'monospace',
         fontSize: 30,

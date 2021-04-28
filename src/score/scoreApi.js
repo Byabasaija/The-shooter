@@ -1,8 +1,8 @@
-const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
 const gameId = 'atJDLGSYqkHSdEO8DULP';
 
 const sendScore = async (name, score) => {
-  const response = await fetch(`${url}/games/${gameId}/scores`, {
+  const response = await fetch(`${url}/${gameId}/scores`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -18,7 +18,7 @@ const sendScore = async (name, score) => {
 };
 
 const getScores = async () => {
-  const response = await fetch(`${url}/games/${gameId}/scores`, {
+  const response = await fetch(`${url}/${gameId}/scores`, {
     method: 'Get',
     mode: 'cors',
     headers: {
