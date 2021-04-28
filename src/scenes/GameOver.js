@@ -26,7 +26,7 @@ export default class GameOver extends Phaser.Scene {
     this.title.setOrigin(0.5);
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.7,
       'sprBtnRestart', {
         fontFamily: 'Courgette, cursive',
         fontSize: 48,
@@ -37,16 +37,32 @@ export default class GameOver extends Phaser.Scene {
 
     this.btnRestart.setInteractive();
     this.btnRestart.on('pointerup',
+      // eslint-disable-next-line func-names
       function () {
         this.scene.start('Game');
       }, this);
 
+    this.btnLeaderBoard = this.add.text(
+      100,
+      200,
+      'LEADERBOARD', {
+        fontFamily: 'monospace',
+        fontSize: 32,
+      },
+    );
+
+    this.btnLeaderBoard.setInteractive();
+    this.btnLeaderBoard.on('pointerup',
+      // eslint-disable-next-line func-names
+      function () {
+        this.scene.start('LeaderBoard');
+      }, this);
     this.gameScore = localStorage.getItem('gameScore');
     this.myScore = parseInt(this.gameScore, 10);
 
     this.textScore = this.add.text(
       100,
-      200,
+      300,
       `Your Score: ${this.gameScore}`,
       {
         fontFamily: 'monospace',

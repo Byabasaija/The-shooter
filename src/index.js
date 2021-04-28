@@ -9,6 +9,7 @@ import PreloaderScene from './scenes/PreloaderScene';
 import TitleScene from './scenes/TitleScene';
 import GameScene from './scenes/GameScene';
 import GameOver from './scenes/GameOver';
+import LeaderBoard from './scenes/LeaderBoard';
 
 class Game extends Phaser.Game {
   constructor() {
@@ -18,6 +19,7 @@ class Game extends Phaser.Game {
     this.scene.add('Title', TitleScene);
     this.scene.add('Game', GameScene);
     this.scene.add('GameOver', GameOver);
+    this.scene.add('LeaderBoard', LeaderBoard);
     this.scene.start('Boot');
   }
 }
