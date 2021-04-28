@@ -19,6 +19,8 @@ A certain planet has been invaded by aliens. The invasion has been detected and 
 ### Gameplay
 
 To play the game follow the instruction below:
+**Start**
+To start playing, Enter your name for your score to be recorded and click the button PLAY
 
 **Movement instruction:**
 - Player can use the `left` (&#8592;) arrow key to move left.
@@ -30,6 +32,8 @@ To play the game follow the instruction below:
 - Player can use the `space bar` to shoot down enemy ships.
 - Enemey ships can shoot lasers but cannot destroy the player because the player is there to shoot down as many alien ships as he can before they cross the space
 - The player has to shoot as many enemy ships as he can to earn more points.
+
+- Payer can use the restart button to restart the gameplay
 
 **Leaderboard**
 - To view the leaderboard, the player should click on the leaderboard image displayed when the game is over.
