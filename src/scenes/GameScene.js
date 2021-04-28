@@ -21,7 +21,6 @@ export default class GameScene extends Phaser.Scene {
     this.gameStatus = game(true);
     this.load.image('laser', 'assets/SpaceShooterRedux/PNG/Lasers/laserBlue01.png');
     this.load.image('sky', 'assets/sky.png');
-    this.load.image('darkPurple', 'assets/darkPurple.png');
     this.load.image('sprBg1', 'assets/sprBg1.png');
     this.load.spritesheet('sprExplosion', 'assets/sprExplosion.png', {
       frameWidth: 32,
@@ -135,6 +134,7 @@ export default class GameScene extends Phaser.Scene {
       loop: true,
 
     });
+
 
     this.time.addEvent({
       delay: 30000,
