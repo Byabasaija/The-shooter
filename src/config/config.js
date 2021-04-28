@@ -2,8 +2,6 @@ import Phaser from 'phaser';
 
 export default {
   type: Phaser.AUTO,
-  // width: 480,
-  // height: 640,
   backgroundColor: 'black',
   scale: {
     mode: Phaser.Scale.NONE,

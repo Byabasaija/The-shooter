@@ -6,8 +6,6 @@ import score from '../score/score';
 import { getScores } from '../score/scoreApi';
 import game from '../score/status';
 
-// atJDLGSYqkHSdEO8DULP
-
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');

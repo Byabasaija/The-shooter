@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 import EnemyLaser from './EnemyLaser';
 import Entity from './Entity';
-// import config from '../config/config';
 
 export default class EnemyShip extends Entity {
   constructor(scene, x, y) {
