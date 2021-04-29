@@ -105,37 +105,9 @@ export default class GameScene extends Phaser.Scene {
     this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
-    this.player.health = 100;
-    this.player.maxHealth = 100;
-    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
-      if (enemy) {
-        if (enemy.onDestroy !== undefined) {
-          enemy.onDestroy();
-        }
-        enemy.explode(true);
-        playerLaser.destroy();
-      }
-    });
-
-
-    this.physics.add.overlap(this.player, this.enemies, this.player.health, (player, enemy) => {
-      if (!player.getData('isDead')
-            && !enemy.getData('isDead')) {
-        player.health.damage(20);
-        enemy.explode(true);
-      }
-    });
-
-    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
-      if (!player.getData('isDead')
-              && !laser.getData('isDead')) {
-        laser.destroy();
-      }
-    });
 
     this.time.addEvent({
       delay: 1000,
@@ -152,14 +124,26 @@ export default class GameScene extends Phaser.Scene {
 
     });
 
+    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+        enemy.explode(true);
+        playerLaser.destroy();
+      }
+    });
 
-    // this.time.addEvent({
-    //   delay: 3000,
-    //   loop: false,
-    //   callback: () => {
-    //     this.scene.start('GameOver');
-    //   },
-    // });
+
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead')
+            && !enemy.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        enemy.explode(true);
+      }
+    });
+
     this.topScore();
   }
 

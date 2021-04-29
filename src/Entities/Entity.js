@@ -19,6 +19,7 @@ export default class Entity extends Phaser.GameObjects.Sprite {
       this.play('sprExplosion');
       this.scene.addScore(50);
 
+
       this.scene.sfx.explosions[Phaser.Math.Between(0,
         this.scene.sfx.explosions.length - 1)].play();
 
@@ -42,5 +43,16 @@ export default class Entity extends Phaser.GameObjects.Sprite {
 
       this.setData('isDead', true);
     }
+  }
+
+  onDestroy() {
+    this.scene.time.addEvent({
+      delay: 100,
+      callback() {
+        this.scene.scene.start('GameOver');
+      },
+      callbackScope: this,
+      loop: false,
+    });
   }
 }

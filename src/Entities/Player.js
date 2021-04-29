@@ -11,6 +11,10 @@ export default class Player extends Entity {
     this.setData('timerShootTick', this.getData('timerShootDelay') - 1);
   }
 
+  create() {
+    this.body.health = 100;
+    this.body.maxHealth = 100;
+  }
 
   moveUp() {
     this.body.velocity.y = -this.getData('speed');
@@ -29,8 +33,10 @@ export default class Player extends Entity {
   }
 
   update() {
-    this.body.setVelocity(0);
+    this.body.setVelocity(0, 0);
+
     this.body.collideWorldBounds = true;
+
     this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
     this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);
 
@@ -46,15 +52,4 @@ export default class Player extends Entity {
       }
     }
   }
-
-  // onDestroy() {
-  //   this.scene.time.addEvent({
-  //     delay: 1000,
-  //     callback() {
-  //       this.scene.scene.start('GameOver');
-  //     },
-  //     callbackScope: this,
-  //     loop: false,
-  //   });
-  // }
 }
