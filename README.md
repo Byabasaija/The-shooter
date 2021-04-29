@@ -3,7 +3,7 @@
 ![microverse](https://camo.githubusercontent.com/3a5835d4f56c57cec85939ac345e43fef164c178/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4d6963726f76657273652d626c756576696f6c6574)
 ## Description
 
-A certain planet has been invaded by aliens. The invasion has been detected and a giant shooter ship has been sent to space to shoot the alien ships down before they cross the space to reach the plannet. Alien ships cannot shootdown the player's shooter ship but can collide and explode with it. Shooter ship therefore has to avoid being hit by any alien ship and must make sure he shoots as many alien ships as possible.
+A certain planet has been invaded by aliens. The invasion has been detected and a giant shooter ship has been sent to space to shoot the alien ships down before they cross the space to reach the plannet. Alien ships can shoot down the player's shooter ship and also can explode with it. Shooter ship therefore has to avoid being hit by any alien ship and must make sure he shoots as many alien ships as possible.
 
 
 
@@ -31,6 +31,7 @@ To start playing, Enter your name for your score to be recorded and click the bu
 **Battle instruction**
 - Player can use the `space bar` to shoot down enemy ships.
 - If a player ship collides with enemy ship, both ships get destroyed and game is over
+- If enemy ship's laser shoots at players's ship it explodes and game is over
 - The player has to shoot as many enemy ships as he can to earn more points.
 
 - Payer can use the restart button to restart the gameplay
