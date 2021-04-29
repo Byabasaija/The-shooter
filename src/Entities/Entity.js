@@ -12,6 +12,7 @@ export default class Entity extends Phaser.GameObjects.Sprite {
     this.setData('isDead', false);
   }
 
+
   explode() {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');

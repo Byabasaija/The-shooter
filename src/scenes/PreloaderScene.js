@@ -8,6 +8,6 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   create() {
-    this.scene.start('GameOver');
+    this.scene.start('Title');
   }
 }
