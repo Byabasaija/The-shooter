@@ -144,6 +144,15 @@ export default class GameScene extends Phaser.Scene {
       }
     });
 
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+      if (!player.getData('isDead')
+              && !laser.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        laser.destroy();
+      }
+    });
+
     this.topScore();
   }
 
