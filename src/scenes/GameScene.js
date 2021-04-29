@@ -19,7 +19,7 @@ export default class GameScene extends Phaser.Scene {
 
   preload() {
     this.gameStatus = game(true);
-    this.load.image('laser', 'assets/SpaceShooterRedux/PNG/Lasers/laserBlue01.png');
+    this.load.image('laser', 'assets/sprLaserPlayer.png');
     this.load.image('sky', 'assets/sky.png');
     this.load.image('sprBg1', 'assets/sprBg1.png');
     this.load.spritesheet('sprExplosion', 'assets/sprExplosion.png', {
@@ -36,8 +36,7 @@ export default class GameScene extends Phaser.Scene {
       frameHeight: 16,
     });
     this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
-    this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
-    this.load.image('sprPlayer', 'assets/SpaceShooterRedux/PNG/playerShip3_blue.png', {
+    this.load.spritesheet('sprPlayer', 'assets/sprPlayer.png', {
       frameWidth: 16,
       frameHeight: 16,
     });
