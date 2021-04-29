@@ -12,12 +12,12 @@ export default class GameOver extends Phaser.Scene {
   preload() {
     this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
     this.load.image('sky', 'assets/sky.png');
-    this.load.image('leaderboad', 'assets/leaderboad.png');
+    this.load.image('leaderboad-ico', 'assets/leaderboard-icon.png');
   }
 
   create() {
     this.add.tileSprite(0, 0, 1500, 1300, 'sky');
-    this.title = this.add.text(this.game.config.width * 0.5, 90, 'GAME OVER', {
+    this.title = this.add.text(this.game.config.width * 0.5, 50, 'GAME OVER', {
       fontFamily: 'Roboto',
       fontSize: 48,
       fontStyle: 'bold',
@@ -46,7 +46,7 @@ export default class GameOver extends Phaser.Scene {
     this.btnLeaderBoard = this.add.sprite(
       230,
       200,
-      'leaderboad', {
+      'leaderboad-ico', {
         fontFamily: 'monospace',
         fontSize: 32,
       },
@@ -70,7 +70,7 @@ export default class GameOver extends Phaser.Scene {
       100,
       350,
 
-      `Score: ${this.gameScore}`,
+      `Your Score: ${this.gameScore}`,
       {
         fontFamily: 'monospace',
         fontSize: 30,

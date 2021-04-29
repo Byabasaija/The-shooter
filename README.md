@@ -82,10 +82,6 @@ npm run test
 - VScode
 - Phaser
 
-## Initial Objectives
-At the beginning of this project, i wanted to give my giant shooter shooter ship the ability to release a massive weapon, like a bomb that can destroy many alien ships at a once.
-At the end i didnot implement this because it required more tecnicality which would require me to do further reading and research yet i had less time.
-
 ## Acknowledgements
 
 I used  Sprites from

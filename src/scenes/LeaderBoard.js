@@ -8,6 +8,7 @@ export default class LeaderBoard extends Phaser.Scene {
 
   preload() {
     this.load.image('sky', 'assets/sky.png');
+    this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
   }
 
   create() {
@@ -22,24 +23,49 @@ export default class LeaderBoard extends Phaser.Scene {
 
     this.score1 = this.add.text(100, 200, '', {
       fontFamily: 'monospace',
-      fontSize: 30,
+      fontSize: 25,
       color: '#fff',
       align: 'center',
     });
 
     this.score2 = this.add.text(100, 250, '', {
       fontFamily: 'monospace',
-      fontSize: 30,
+      fontSize: 25,
       color: '#fff',
       align: 'center',
     });
 
     this.score3 = this.add.text(100, 300, '', {
       fontFamily: 'monospace',
-      fontSize: 30,
+      fontSize: 25,
       color: '#fff',
       align: 'center',
     });
+
+    this.add.text(100, 400, 'Need to take the lead??', {
+      fontFamily: 'monospace',
+      fontSize: 20,
+      color: '#fff',
+      align: 'center',
+    });
+
+    this.btnRestart = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.7,
+      'sprBtnRestart', {
+        fontFamily: 'Courgette, cursive',
+        fontSize: 48,
+      },
+    );
+
+    this.btnRestart.setOrigin(0.5, 0.5);
+
+    this.btnRestart.setInteractive();
+    this.btnRestart.on('pointerup',
+      // eslint-disable-next-line func-names
+      function () {
+        this.scene.start('Game');
+      }, this);
 
 
     this.topScore();
