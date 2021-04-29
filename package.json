@@ -1,0 +1,53 @@
+{
+  "name": "the-shooter",
+  "version": "1.0.0",
+  "description": "A shooting game",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/plugin-transform-regenerator": "^7.13.15",
+    "@babel/preset-env": "^7.13.12",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.6.3",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.17.2",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "core-js": "^3.11.0",
+    "phaser": "^3.54.0",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "scripts": {
+    "test": "jest",
+    "build:dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Byabasaija/The-shooter.git"
+  },
+  "author": "pascal byabasaija",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Byabasaija/The-shooter/issues"
+  },
+  "homepage": "https://github.com/Byabasaija/The-shooter#readme"
+}
